@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> title </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1> title </h1>
+    <p>Welcome to  title </p>
+    <form action="/create" method="post">
+      <input type="text" placeholder="file name " name="filename"><br>
+      <button type="submit">search</button>
+    </form>
+    <ol>
+  
+    <%  files.forEach(function(file){ %>
+        <li style="width: 30%; height: 40px; display: flex; justify-content: space-between;"> <a href="/<%=file %>"><%= file %></a> <a href="/file/<%=file %>" style="width: 100px; border-radius: 10px;">close</a> </li>
+
+     
+
+     <% })  %>
+
+    <textarea rows="11" cols="34" name="filedata"><%= filedata %></textarea>
+     
+
+     
+    </ol>
+  </body>
+</html>
