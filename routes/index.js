@@ -27,6 +27,7 @@ res.redirect('/');
 
 /* point 11 /:filename get root  */
 
+
 router.get('/:filename',function(req,res,next){
   let folderpath = path.join(__dirname,"..","public","upload");
   let files = fs.readdirSync(folderpath);
@@ -34,11 +35,9 @@ router.get('/:filename',function(req,res,next){
   let filepath = path.join(__dirname,"..","public","upload",req.params.filename);
    let filedata= fs.readFileSync(filepath,'utf-8');
 
-res.render('index', {files,filedata});
+res.render('index', {files,filedata,filename:req.params.filename});
 
 })
-
-
 
 
 /* for create file in upload folder */
@@ -47,7 +46,18 @@ router.post('/create', function(req, res, next) {
   let filepath = path.join(__dirname,"..","public","upload",req.body.filename);
   fs.writeFileSync(filepath,"");
   // console.log(filepath)
-  res.redirect('/')
+  res.redirect(`/${req.body.filename}`,{})
+
+});
+
+/* /update/:filename page post route */
+
+router.post('/update/:filename', function(req, res, next) {
+
+  let filepath = path.join(__dirname,"..","public","upload",req.params.filename);
+  fs.writeFileSync(filepath,req.body.filedata);
+  // console.log(filepath)
+  res.redirect(`/${req.params.filename}`)
 
 });
 

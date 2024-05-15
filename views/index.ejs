@@ -20,7 +20,16 @@
 
      <% })  %>
 
-    <textarea rows="11" cols="34" name="filedata"><%= filedata %></textarea>
+  
+
+    <form action="/update/<%=filename %>" method="post" name="filedata">
+      <textarea rows="11" cols="34" name="filedata"><%= filedata %></textarea>
+    <button type="submit">update</button>
+    </form>
+
+  
+
+
      
 
      
